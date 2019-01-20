@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "/Users/Luppy/.platformio/packages/framework-libopencm3"
 		}
 	],
 	"settings": {
