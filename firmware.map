@@ -308,17 +308,17 @@ OUTPUT(.pioenvs/bluepill_f103c8/firmware.elf elf32-littlearm)
  .debug_line    0x000000000000056a      0x233 .pioenvs/bluepill_f103c8/libFrameworkLibOpenCM3.a(rcc_common_all.o)
  .debug_line    0x000000000000079d      0x25f .pioenvs/bluepill_f103c8/libFrameworkLibOpenCM3.a(vector.o)
 
-.debug_str      0x0000000000000000      0xa62
- .debug_str     0x0000000000000000      0x3e7 .pioenvs/bluepill_f103c8/src/main.o
-                                        0x429 (size before relaxing)
- .debug_str     0x00000000000003e7       0xd9 .pioenvs/bluepill_f103c8/libFrameworkLibOpenCM3.a(gpio.o)
-                                        0x26b (size before relaxing)
- .debug_str     0x00000000000004c0       0xb2 .pioenvs/bluepill_f103c8/libFrameworkLibOpenCM3.a(gpio_common_all.o)
-                                        0x259 (size before relaxing)
- .debug_str     0x0000000000000572      0x310 .pioenvs/bluepill_f103c8/libFrameworkLibOpenCM3.a(rcc_common_all.o)
-                                        0x71c (size before relaxing)
- .debug_str     0x0000000000000882      0x1e0 .pioenvs/bluepill_f103c8/libFrameworkLibOpenCM3.a(vector.o)
-                                        0x359 (size before relaxing)
+.debug_str      0x0000000000000000      0xa39
+ .debug_str     0x0000000000000000      0x3be .pioenvs/bluepill_f103c8/src/main.o
+                                        0x400 (size before relaxing)
+ .debug_str     0x00000000000003be       0xd9 .pioenvs/bluepill_f103c8/libFrameworkLibOpenCM3.a(gpio.o)
+                                        0x242 (size before relaxing)
+ .debug_str     0x0000000000000497       0xb2 .pioenvs/bluepill_f103c8/libFrameworkLibOpenCM3.a(gpio_common_all.o)
+                                        0x230 (size before relaxing)
+ .debug_str     0x0000000000000549      0x310 .pioenvs/bluepill_f103c8/libFrameworkLibOpenCM3.a(rcc_common_all.o)
+                                        0x6f3 (size before relaxing)
+ .debug_str     0x0000000000000859      0x1e0 .pioenvs/bluepill_f103c8/libFrameworkLibOpenCM3.a(vector.o)
+                                        0x330 (size before relaxing)
 
 .comment        0x0000000000000000       0x7e
  .comment       0x0000000000000000       0x7e .pioenvs/bluepill_f103c8/src/main.o
