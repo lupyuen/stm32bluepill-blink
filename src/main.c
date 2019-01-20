@@ -25,9 +25,9 @@
 #define LEDPORT (GPIOC)
 #define LEDPIN (GPIO13)
 
-int bss_var;
+int bss_var;  //  Globals initialised with 0 or NULL will be allocated in the BSS Section.
 
-int data_var = 123;
+int data_var = 123;  //  Globals initialised with other values will be allocated in the Data Section.
 
 static void gpio_setup(void)
 {
@@ -41,14 +41,15 @@ static void gpio_setup(void)
 
 int main(void)
 {
-	int stack_var = 0;
+	int stack_var = bss_var++ + data_var++;
 	int i;
 	gpio_setup();
 	/* Blink the LED on the board. */
 	while (1) {
 		/* Using API function gpio_toggle(): */
 		gpio_toggle(LEDPORT, LEDPIN);	/* LED on/off */
-		for (i = 0; i < 1000000 + bss_var + data_var + stack_var; i++) {	/* Wait a bit. Reference ss_var + data_var + stack_var here so the compiler won't optimised them out */
+		/* Reference ss_var + data_var + stack_var here so the compiler won't optimised them out. */
+		for (i = 0; i < 1000000 + bss_var++ + data_var++ + stack_var++; i++) {	/* Wait a bit. */
 			__asm__("nop");
 		}
 	}

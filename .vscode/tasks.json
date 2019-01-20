@@ -11,7 +11,7 @@
                 "command": "cmd",
                 "args": [
                     "/c",
-                    " ~/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-objdump -t -S .pioenvs/bluepill_f103c8/firmware.elf >firmware.dump "
+                    " %userprofile%/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-objdump -t -S .pioenvs/bluepill_f103c8/firmware.elf >firmware.dump "
                 ]
             },
             "osx": {
