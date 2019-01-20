@@ -21,7 +21,6 @@
 
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
-#include <stdio.h>
 #define RCCLEDPORT (RCC_GPIOC)
 #define LEDPORT (GPIOC)
 #define LEDPIN (GPIO13)
@@ -42,10 +41,7 @@ static void gpio_setup(void)
 
 int main(void)
 {
-	//  Sample call to sprintf() to demo changes in the memory map.
-	char stack_buf[64];
-	bss_var = sprintf(stack_buf, "%d %d", bss_var, data_var);
-
+	
 	int stack_var = bss_var++ + data_var++;
 	int i;
 	gpio_setup();
