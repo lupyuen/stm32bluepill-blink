@@ -25,6 +25,10 @@
 #define LEDPORT (GPIOC)
 #define LEDPIN (GPIO13)
 
+int bss_var;
+
+int data_var = 123;
+
 static void gpio_setup(void)
 {
 	/* Enable GPIO clock. */
@@ -37,13 +41,14 @@ static void gpio_setup(void)
 
 int main(void)
 {
+	int stack_var = 0;
 	int i;
 	gpio_setup();
 	/* Blink the LED on the board. */
 	while (1) {
 		/* Using API function gpio_toggle(): */
 		gpio_toggle(LEDPORT, LEDPIN);	/* LED on/off */
-		for (i = 0; i < 1000000; i++) {	/* Wait a bit. */
+		for (i = 0; i < 1000000 + bss_var + data_var + stack_var; i++) {	/* Wait a bit. Reference ss_var + data_var + stack_var here so the compiler won't optimised them out */
 			__asm__("nop");
 		}
 	}
