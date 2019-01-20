@@ -11,16 +11,16 @@
                 "command": "cmd",
                 "args": [
                     "/c",
-                    " %userprofile%/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-objdump -t -S .pioenvs/bluepill_f103c8/firmware.elf >firmware.dump "
+                    " \"%userprofile%/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-objdump\" --wide --syms --source --line-numbers .pioenvs/bluepill_f103c8/firmware.elf >firmware.dump "
                 ]
             },
             "osx": {
                 "command": 
-                " ~/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-objdump -t -S .pioenvs/bluepill_f103c8/firmware.elf >firmware.dump "
+                " ~/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-objdump --wide --syms --source --line-numbers .pioenvs/bluepill_f103c8/firmware.elf >firmware.dump "
             },
             "linux": {
                 "command": 
-                " ~/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-objdump -t -S .pioenvs/bluepill_f103c8/firmware.elf >firmware.dump "
+                " ~/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-objdump --wide --syms --source --line-numbers .pioenvs/bluepill_f103c8/firmware.elf >firmware.dump "
             },
             "problemMatcher": [],
             "group": "build",

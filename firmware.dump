@@ -155,6 +155,8 @@ Disassembly of section .text:
  800014c:	4f 02 00 08                                         O...
 
 08000150 <main>:
+main():
+c:\stm32bluepill-blink/src/main.c:43
 	/* Using API functions: */
 	gpio_set_mode(LEDPORT, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, LEDPIN);
 }
@@ -162,16 +164,22 @@ Disassembly of section .text:
 int main(void)
 {
  8000150:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+c:\stm32bluepill-blink/src/main.c:44
 	int stack_var = bss_var++ + data_var++;
  8000152:	4e18      	ldr	r6, [pc, #96]	; (80001b4 <main+0x64>)
  8000154:	4d18      	ldr	r5, [pc, #96]	; (80001b8 <main+0x68>)
  8000156:	6834      	ldr	r4, [r6, #0]
+gpio_setup():
+c:\stm32bluepill-blink/src/main.c:36
 	rcc_periph_clock_enable(RCCLEDPORT);
  8000158:	f44f 7041 	mov.w	r0, #772	; 0x304
+main():
+c:\stm32bluepill-blink/src/main.c:44
 	int stack_var = bss_var++ + data_var++;
  800015c:	1c63      	adds	r3, r4, #1
  800015e:	6033      	str	r3, [r6, #0]
  8000160:	682b      	ldr	r3, [r5, #0]
+c:\stm32bluepill-blink/src/main.c:50
 	int i;
 	gpio_setup();
 	/* Blink the LED on the board. */
@@ -179,25 +187,33 @@ int main(void)
 		/* Using API function gpio_toggle(): */
 		gpio_toggle(LEDPORT, LEDPIN);	/* LED on/off */
  8000162:	4f16      	ldr	r7, [pc, #88]	; (80001bc <main+0x6c>)
+c:\stm32bluepill-blink/src/main.c:44
 	int stack_var = bss_var++ + data_var++;
  8000164:	1c5a      	adds	r2, r3, #1
  8000166:	602a      	str	r2, [r5, #0]
  8000168:	441c      	add	r4, r3
+gpio_setup():
+c:\stm32bluepill-blink/src/main.c:36
 	rcc_periph_clock_enable(RCCLEDPORT);
  800016a:	f000 f863 	bl	8000234 <rcc_periph_clock_enable>
+c:\stm32bluepill-blink/src/main.c:39
 	gpio_set_mode(LEDPORT, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, LEDPIN);
  800016e:	f44f 5300 	mov.w	r3, #8192	; 0x2000
  8000172:	2200      	movs	r2, #0
  8000174:	2102      	movs	r1, #2
  8000176:	4811      	ldr	r0, [pc, #68]	; (80001bc <main+0x6c>)
  8000178:	f000 f822 	bl	80001c0 <gpio_set_mode>
+main():
+c:\stm32bluepill-blink/src/main.c:50
 		gpio_toggle(LEDPORT, LEDPIN);	/* LED on/off */
  800017c:	f44f 5100 	mov.w	r1, #8192	; 0x2000
  8000180:	4638      	mov	r0, r7
  8000182:	f000 f84e 	bl	8000222 <gpio_toggle>
+c:\stm32bluepill-blink/src/main.c:52
 		/* Reference ss_var + data_var + stack_var here so the compiler won't optimised them out. */
 		for (i = 0; i < 1000000 + bss_var++ + data_var++ + stack_var++; i++) {	/* Wait a bit. */
  8000186:	4622      	mov	r2, r4
+c:\stm32bluepill-blink/src/main.c:52 (discriminator 1)
  8000188:	6833      	ldr	r3, [r6, #0]
  800018a:	6828      	ldr	r0, [r5, #0]
  800018c:	1c59      	adds	r1, r3, #1
@@ -212,10 +228,13 @@ int main(void)
  80001a2:	1b12      	subs	r2, r2, r4
  80001a4:	4293      	cmp	r3, r2
  80001a6:	dc01      	bgt.n	80001ac <main+0x5c>
+c:\stm32bluepill-blink/src/main.c:52
  80001a8:	460c      	mov	r4, r1
  80001aa:	e7e7      	b.n	800017c <main+0x2c>
+c:\stm32bluepill-blink/src/main.c:53 (discriminator 3)
 			__asm__("nop");
  80001ac:	bf00      	nop
+c:\stm32bluepill-blink/src/main.c:52 (discriminator 3)
 		for (i = 0; i < 1000000 + bss_var++ + data_var++ + stack_var++; i++) {	/* Wait a bit. */
  80001ae:	460a      	mov	r2, r1
  80001b0:	e7ea      	b.n	8000188 <main+0x38>
@@ -225,6 +244,8 @@ int main(void)
  80001bc:	40011000 	.word	0x40011000
 
 080001c0 <gpio_set_mode>:
+gpio_set_mode():
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\stm32\f1/gpio.c:96
 	     If multiple pins are to be set, use logical OR '|' to separate
 	     them.
 */
@@ -232,6 +253,7 @@ int main(void)
 void gpio_set_mode(uint32_t gpioport, uint8_t mode, uint8_t cnf, uint16_t gpios)
 {
  80001c0:	e92d 43f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, lr}
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\stm32\f1/gpio.c:105
 	/*
 	 * We want to set the config only for the pins mentioned in gpios,
 	 * but keeping the others, so read out the actual config first.
@@ -239,6 +261,7 @@ void gpio_set_mode(uint32_t gpioport, uint8_t mode, uint8_t cnf, uint16_t gpios)
 	crl = GPIO_CRL(gpioport);
 	crh = GPIO_CRH(gpioport);
  80001c4:	2600      	movs	r6, #0
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\stm32\f1/gpio.c:121
 
 		/* Use tmp32 to either modify crl or crh. */
 		tmp32 = (i < 8) ? crl : crh;
@@ -247,16 +270,21 @@ void gpio_set_mode(uint32_t gpioport, uint8_t mode, uint8_t cnf, uint16_t gpios)
 		tmp32 &= ~(0xf << offset);	/* Clear the bits first. */
  80001c6:	f04f 0e0f 	mov.w	lr, #15
  80001ca:	f643 78f8 	movw	r8, #16376	; 0x3ff8
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\stm32\f1/gpio.c:96
 {
  80001ce:	469c      	mov	ip, r3
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\stm32\f1/gpio.c:104
 	crl = GPIO_CRL(gpioport);
  80001d0:	6803      	ldr	r3, [r0, #0]
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\stm32\f1/gpio.c:105
 	crh = GPIO_CRH(gpioport);
  80001d2:	6847      	ldr	r7, [r0, #4]
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\stm32\f1/gpio.c:110
 		if (!((1 << i) & gpios)) {
  80001d4:	fa4c f406 	asr.w	r4, ip, r6
  80001d8:	07e4      	lsls	r4, r4, #31
  80001da:	d51b      	bpl.n	8000214 <gpio_set_mode+0x54>
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\stm32\f1/gpio.c:115
 		offset = (i < 8) ? (i * 4) : ((i - 8) * 4);
  80001dc:	2e07      	cmp	r6, #7
  80001de:	bf94      	ite	ls
@@ -270,15 +298,18 @@ void gpio_set_mode(uint32_t gpioport, uint8_t mode, uint8_t cnf, uint16_t gpios)
  80001ee:	b2a4      	uxthls	r4, r4
  80001f0:	bf88      	it	hi
  80001f2:	b2a4      	uxthhi	r4, r4
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\stm32\f1/gpio.c:121
 		tmp32 &= ~(0xf << offset);	/* Clear the bits first. */
  80001f4:	fa0e f504 	lsl.w	r5, lr, r4
  80001f8:	ea29 0905 	bic.w	r9, r9, r5
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\stm32\f1/gpio.c:122
 		tmp32 |= (mode << offset) | (cnf << (offset + 2));
  80001fc:	1ca5      	adds	r5, r4, #2
  80001fe:	fa02 f505 	lsl.w	r5, r2, r5
  8000202:	fa01 f404 	lsl.w	r4, r1, r4
  8000206:	432c      	orrs	r4, r5
  8000208:	ea44 0409 	orr.w	r4, r4, r9
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\stm32\f1/gpio.c:126
 
 		/* Write tmp32 into crl or crh, leave the other unchanged. */
 		crl = (i < 8) ? tmp32 : crl;
@@ -288,19 +319,25 @@ void gpio_set_mode(uint32_t gpioport, uint8_t mode, uint8_t cnf, uint16_t gpios)
  8000210:	4627      	movcs	r7, r4
  8000212:	4623      	movcc	r3, r4
  8000214:	3601      	adds	r6, #1
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\stm32\f1/gpio.c:108 (discriminator 2)
 	for (i = 0; i < 16; i++) {
  8000216:	2e10      	cmp	r6, #16
  8000218:	d1dc      	bne.n	80001d4 <gpio_set_mode+0x14>
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\stm32\f1/gpio.c:129
 	}
 
 	GPIO_CRL(gpioport) = crl;
  800021a:	6003      	str	r3, [r0, #0]
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\stm32\f1/gpio.c:130
 	GPIO_CRH(gpioport) = crh;
  800021c:	6047      	str	r7, [r0, #4]
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\stm32\f1/gpio.c:131
 }
  800021e:	e8bd 83f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, pc}
 
 08000222 <gpio_toggle>:
+gpio_toggle():
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\stm32\common/gpio_common_all.c:90
 	     If multiple pins are to be changed, use logical OR '|' to separate
 	     them.
 */
@@ -308,15 +345,19 @@ void gpio_toggle(uint32_t gpioport, uint16_t gpios)
 {
 	uint32_t port = GPIO_ODR(gpioport);
  8000222:	68c3      	ldr	r3, [r0, #12]
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\stm32\common/gpio_common_all.c:91
 	GPIO_BSRR(gpioport) = ((port & gpios) << 16) | (~port & gpios);
  8000224:	ea01 0203 	and.w	r2, r1, r3
  8000228:	ea21 0103 	bic.w	r1, r1, r3
  800022c:	ea41 4102 	orr.w	r1, r1, r2, lsl #16
  8000230:	6101      	str	r1, [r0, #16]
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\stm32\common/gpio_common_all.c:92
 }
  8000232:	4770      	bx	lr
 
 08000234 <rcc_periph_clock_enable>:
+rcc_periph_clock_enable():
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\stm32\common/rcc_common_all.c:123
  * For available constants, see #rcc_periph_clken (RCC_UART1 for example)
  */
 
@@ -332,10 +373,13 @@ void rcc_periph_clock_enable(enum rcc_periph_clken clken)
  8000246:	4090      	lsls	r0, r2
  8000248:	4308      	orrs	r0, r1
  800024a:	6018      	str	r0, [r3, #0]
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\stm32\common/rcc_common_all.c:124
 }
  800024c:	4770      	bx	lr
 
 0800024e <blocking_handler>:
+blocking_handler():
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\cm3/vector.c:104
 	}
 
 }
@@ -345,6 +389,8 @@ void blocking_handler(void)
  800024e:	e7fe      	b.n	800024e <blocking_handler>
 
 08000250 <null_handler>:
+null_handler():
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\cm3/vector.c:111
 }
 
 void null_handler(void)
@@ -355,63 +401,84 @@ void null_handler(void)
 	...
 
 08000254 <reset_handler>:
+reset_handler():
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\cm3/vector.c:68
 	for (src = &_data_loadaddr, dest = &_data;
  8000254:	2200      	movs	r2, #0
  8000256:	4c18      	ldr	r4, [pc, #96]	; (80002b8 <reset_handler+0x64>)
  8000258:	4918      	ldr	r1, [pc, #96]	; (80002bc <reset_handler+0x68>)
  800025a:	4819      	ldr	r0, [pc, #100]	; (80002c0 <reset_handler+0x6c>)
  800025c:	1853      	adds	r3, r2, r1
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\cm3/vector.c:68 (discriminator 1)
  800025e:	4283      	cmp	r3, r0
  8000260:	d316      	bcc.n	8000290 <reset_handler+0x3c>
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\cm3/vector.c:75
 		*dest++ = 0;
  8000262:	2100      	movs	r1, #0
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\cm3/vector.c:74
 	while (dest < &_ebss) {
  8000264:	4a17      	ldr	r2, [pc, #92]	; (80002c4 <reset_handler+0x70>)
  8000266:	4293      	cmp	r3, r2
  8000268:	d316      	bcc.n	8000298 <reset_handler+0x44>
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\cm3/vector.c:80
 	SCB_CCR |= SCB_CCR_STKALIGN;
  800026a:	4a17      	ldr	r2, [pc, #92]	; (80002c8 <reset_handler+0x74>)
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\cm3/vector.c:86
 	for (fp = &__preinit_array_start; fp < &__preinit_array_end; fp++) {
  800026c:	4c17      	ldr	r4, [pc, #92]	; (80002cc <reset_handler+0x78>)
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\cm3/vector.c:80
 	SCB_CCR |= SCB_CCR_STKALIGN;
  800026e:	6813      	ldr	r3, [r2, #0]
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\cm3/vector.c:86
 	for (fp = &__preinit_array_start; fp < &__preinit_array_end; fp++) {
  8000270:	4d17      	ldr	r5, [pc, #92]	; (80002d0 <reset_handler+0x7c>)
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\cm3/vector.c:80
 	SCB_CCR |= SCB_CCR_STKALIGN;
  8000272:	f443 7300 	orr.w	r3, r3, #512	; 0x200
  8000276:	6013      	str	r3, [r2, #0]
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\cm3/vector.c:86 (discriminator 1)
 	for (fp = &__preinit_array_start; fp < &__preinit_array_end; fp++) {
  8000278:	42ac      	cmp	r4, r5
  800027a:	d310      	bcc.n	800029e <reset_handler+0x4a>
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\cm3/vector.c:89
 	for (fp = &__init_array_start; fp < &__init_array_end; fp++) {
  800027c:	4c15      	ldr	r4, [pc, #84]	; (80002d4 <reset_handler+0x80>)
  800027e:	4d16      	ldr	r5, [pc, #88]	; (80002d8 <reset_handler+0x84>)
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\cm3/vector.c:89 (discriminator 1)
  8000280:	42ac      	cmp	r4, r5
  8000282:	d310      	bcc.n	80002a6 <reset_handler+0x52>
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\cm3/vector.c:94
 	main();
  8000284:	f7ff ff64 	bl	8000150 <main>
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\cm3/vector.c:97
 	for (fp = &__fini_array_start; fp < &__fini_array_end; fp++) {
  8000288:	4c14      	ldr	r4, [pc, #80]	; (80002dc <reset_handler+0x88>)
  800028a:	4d15      	ldr	r5, [pc, #84]	; (80002e0 <reset_handler+0x8c>)
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\cm3/vector.c:97 (discriminator 1)
  800028c:	42ac      	cmp	r4, r5
  800028e:	d30e      	bcc.n	80002ae <reset_handler+0x5a>
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\cm3/vector.c:71
 		*dest = *src;
  8000290:	5913      	ldr	r3, [r2, r4]
  8000292:	5053      	str	r3, [r2, r1]
  8000294:	3204      	adds	r2, #4
  8000296:	e7e1      	b.n	800025c <reset_handler+0x8>
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\cm3/vector.c:75
 		*dest++ = 0;
  8000298:	6019      	str	r1, [r3, #0]
  800029a:	3304      	adds	r3, #4
  800029c:	e7e3      	b.n	8000266 <reset_handler+0x12>
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\cm3/vector.c:87 (discriminator 3)
 		(*fp)();
  800029e:	f854 3b04 	ldr.w	r3, [r4], #4
  80002a2:	4798      	blx	r3
  80002a4:	e7e8      	b.n	8000278 <reset_handler+0x24>
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\cm3/vector.c:90 (discriminator 3)
 		(*fp)();
  80002a6:	f854 3b04 	ldr.w	r3, [r4], #4
  80002aa:	4798      	blx	r3
  80002ac:	e7e8      	b.n	8000280 <reset_handler+0x2c>
+C:\users\guppy\.platformio\packages\framework-libopencm3\lib\cm3/vector.c:98 (discriminator 3)
 		(*fp)();
  80002ae:	f854 3b04 	ldr.w	r3, [r4], #4
  80002b2:	4798      	blx	r3
