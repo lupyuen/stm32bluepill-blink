@@ -40,8 +40,7 @@ static void gpio_setup(void)
 }
 
 int main(void)
-{
-	
+{	
 	int stack_var = bss_var++ + data_var++;
 	int i;
 	gpio_setup();
