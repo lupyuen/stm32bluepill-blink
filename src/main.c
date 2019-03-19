@@ -49,7 +49,7 @@ int main(void)
 		/* Using API function gpio_toggle(): */
 		gpio_toggle(LEDPORT, LEDPIN);	/* LED on/off */
 		/* Reference ss_var + data_var + stack_var here so the compiler won't optimise them away. */
-		for (i = 0; i < 1000000 + bss_var++ + data_var++ + stack_var++; i++) {	/* Wait a bit. */
+		for (i = 0; i < 1000000 + bss_var + data_var + stack_var; i++) {	/* Wait a bit. */
 			__asm__("nop");
 		}
 	}
